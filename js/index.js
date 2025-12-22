@@ -25,25 +25,38 @@ function typing() {
 }
 if (el) typing();
 
-/* Load GitHub Projects */
+/* Load GitHub PINNED Projects */
 const container = document.getElementById("projects");
+
+const pinnedRepos = [
+  "Random-User",
+  "Books-page",
+  "Christmas",
+  "restCountrys",
+  "Ecobazar2",
+  "Modal",
+];
 
 fetch("https://api.github.com/users/hafizullohkomilov013-cyber/repos")
   .then((res) => res.json())
   .then((data) => {
-    data.slice(0, 6).forEach((repo) => {
+    const filtered = data.filter((repo) => pinnedRepos.includes(repo.name));
+
+    filtered.forEach((repo) => {
       container.innerHTML += `
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
+        <div class="col-md-4 mb-4" data-aos="fade-up">
+          <div class="card h-100 p-3">
             <h5>${repo.name}</h5>
-            <p class="text-muted">${repo.description || "No description"}</p>
-            <a href="${
-              repo.html_url
-            }" target="_blank" class="btn btn-outline-primary btn-sm">
+            <p class="text-muted">
+              ${repo.description || "No description"}
+            </p>
+            <a href="${repo.html_url}" target="_blank"
+               class="btn btn-outline-primary btn-sm">
               GitHub
             </a>
           </div>
         </div>
       `;
     });
-  });
+  })
+  .catch((err) => console.error("GitHub API error:", err));
