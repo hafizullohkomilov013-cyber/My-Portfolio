@@ -31,7 +31,7 @@ const container = document.getElementById("projects");
 const pinnedRepos = [
   "Random-User",
   "Books-page",
-  "Christmas",
+  "Chiristmas",
   "restCountrys",
   "Ecobazar2",
   "Modal",
