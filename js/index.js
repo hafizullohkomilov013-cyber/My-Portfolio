@@ -34,7 +34,7 @@ const pinnedRepos = [
   "Chiristmas",
   "restCountrys",
   "Ecobazar2",
-  "Modal",
+  "Blogify-site",
 ];
 
 fetch("https://api.github.com/users/hafizullohkomilov013-cyber/repos")
